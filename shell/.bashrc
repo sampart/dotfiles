@@ -108,11 +108,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Add Vagrant to path
-PATH=$PATH:/opt/vagrant/bin
-
-# Add useful scripts to path
-PATH=$PATH:/home/sam/scripts-in-path
-
+source /home/sam/.dotfiles/add-to-path
 source /home/sam/.dotfiles/git-settings
 source /home/sam/.dotfiles/colourful-man-pages
