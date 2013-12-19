@@ -1,0 +1,7 @@
+# Colourful man pages
+# http://unix.stackexchange.com/a/147
+# Get color support for 'less'
+export LESS="--RAW-CONTROL-CHARS"
+# Use colors for less, man, etc.
+[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
+
