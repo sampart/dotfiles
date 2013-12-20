@@ -16,15 +16,16 @@ DOTFILES_ROOT="`pwd`"
 # Basic shell things
 # ===================
 
-mkdir -p $HOME/.dotfiles
+# copy .bashrc itself
+cp $DOTFILES_ROOT/bashrc/.bashrc $HOME/.bashrc
+printf "$DOTFILES_ROOT/bashrc/.bashrc copied to $HOME/.bashrc\n"
 
-cp ./shell/.bashrc $HOME/.bashrc
-printf "$DOTFILES_ROOT/shell/.bashrc copied to ~/.bashrc\n"
+mkdir -p $HOME/.bashrc-includes
 
-# symlink shell files to the home directory
-for source in `find $DOTFILES_ROOT/shell -name \*.symlink`
+# symlink bashrc include files to their directory
+for source in `find $DOTFILES_ROOT/bashrc -name \*.symlink`
 do
-  dest="$HOME/.dotfiles/`basename \"${source%.*}\"`"
+  dest="$HOME/.bashrc-includes/`basename \"${source%.*}\"`"
 
   rm -rf $dest
   ln -s $source $dest

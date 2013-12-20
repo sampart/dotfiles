@@ -108,6 +108,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-source /home/sam/.dotfiles/add-to-path
-source /home/sam/.dotfiles/git-settings
-source /home/sam/.dotfiles/colourful-man-pages
+source /home/sam/.bashrc-includes/add-to-path
+source /home/sam/.bashrc-includes/git-settings
+source /home/sam/.bashrc-includes/colourful-man-pages
