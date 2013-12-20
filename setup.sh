@@ -13,6 +13,8 @@ DOTFILES_ROOT="`pwd`"
 # Basic shell things
 # ===================
 
+mkdir -p $HOME/.dotfiles
+
 cp ./shell/.bashrc $HOME/.bashrc
 printf "$DOTFILES_ROOT/shell/.bashrc copied to ~/.bashrc\n"
 
