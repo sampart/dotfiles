@@ -7,6 +7,9 @@
 # This script is written with the idea that it can be run repeatably to maintain
 # a consistent state. ie running the script again should not break anything
 
+echo "\033[32mMain dotfiles install script started..."
+echo "\033[0m"
+
 DOTFILES_ROOT="`pwd`"
 
 # ===================
@@ -18,8 +21,8 @@ mkdir -p $HOME/.dotfiles
 cp ./shell/.bashrc $HOME/.bashrc
 printf "$DOTFILES_ROOT/shell/.bashrc copied to ~/.bashrc\n"
 
-# symlink files to the home directory
-for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
+# symlink shell files to the home directory
+for source in `find $DOTFILES_ROOT/shell -name \*.symlink`
 do
   dest="$HOME/.dotfiles/`basename \"${source%.*}\"`"
 
