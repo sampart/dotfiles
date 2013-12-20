@@ -9,6 +9,10 @@
 
 DOTFILES_ROOT="`pwd`"
 
+# ===================
+# Basic shell things
+# ===================
+
 cp ./shell/.bashrc $HOME/.bashrc
 printf "$DOTFILES_ROOT/shell/.bashrc copied to ~/.bashrc\n"
 
@@ -23,3 +27,9 @@ do
 done
 
 printf '\n'
+
+# ================================
+# Run installers for other things
+# ================================
+
+$DOTFILES_ROOT/scripts-in-path/setup.sh

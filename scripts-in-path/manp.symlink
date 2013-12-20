@@ -1,0 +1,11 @@
+#!/bin/bash
+
+M=`man -w $*`                   # Get path of page source.
+if [ -z $M ]; then exit; fi   # Quit if it doesn't exist.
+N=`basename $M .gz`             # Extract the name of the file and
+P=/tmp/man.$N.pdf               # use it to create a PDF file name.
+if [ ! -e $P ]; then            # If the PDF file doesn't exist,
+    echo Creating PDF for $N... 
+    man -t $1 | ps2pdf - $P     # generate it.
+fi
+xdg-open $P                     # Open the PDF version.

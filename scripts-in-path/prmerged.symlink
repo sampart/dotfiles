@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# PR been merged on github?  This will checkout develop, git pull, and then delete the branch you were on.
+
+# Thanks http://stackoverflow.com/a/1593487/328817
+branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
+branch_name="(unnamed branch)"     # detached HEAD
+branch_name=${branch_name##refs/heads/}
+
+if [ "$branch_name" = "develop" ] || [ "$branch_name" = "master" ]
+then
+echo "Only for feature branches!"
+exit 1;
+fi
+
+git checkout develop
+git pull origin develop
+git branch -d $branch_name
+git branch # I like to know what branches I've got left
