@@ -16,6 +16,8 @@ DOTFILES_ROOT="`pwd`"
 # Basic shell things
 # ===================
 
+echo "Basic shell things\n"
+
 # copy .bashrc itself
 cp $DOTFILES_ROOT/bashrc/.bashrc $HOME/.bashrc
 printf "$DOTFILES_ROOT/bashrc/.bashrc copied to $HOME/.bashrc\n"
@@ -32,6 +34,23 @@ do
   printf "symlinked $source to $dest\n"
 done
 
+printf '\n'
+
+# ============================
+# Other home dir config files
+# ============================
+
+cd more-home-dir-config
+
+# first delete the existing files in home
+find -type f -exec rm $HOME/{} \;
+
+# now symlink the new ones
+find -type f -exec ln -s $DOTFILES_ROOT/more-home-dir-config/{} $HOME/{} \;
+
+cd $DOTFILES_ROOT
+
+echo "Other home dir config files symlinked\n"
 printf '\n'
 
 # ================================

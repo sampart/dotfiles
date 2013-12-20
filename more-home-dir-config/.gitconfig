@@ -1,0 +1,26 @@
+[user]
+	name = Sam Partington
+	email = sam@whiteoctober.co.uk
+[credential]
+	helper = cache
+[diff]
+	tool = bc3
+[difftool "bc3"]
+	cmd = /home/sam/git-bcompare.sh
+[color]
+	ui = auto
+[difftool]
+	prompt = false
+[core]
+	excludesfile = /home/sam/.gitignore
+[alias]
+	br = branch
+	dl = difftool
+	s = status
+	log = log --decorate
+	logfiles = log --pretty=oneline --graph --decorate --stat
+	continue = rebase --continue
+	cont = rebase --continue
+	update = commit -a --amend -C HEAD
+[push]
+	default = current
