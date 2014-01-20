@@ -2,5 +2,5 @@
 PATH=$PATH:/opt/vagrant/bin
 
 # Add useful scripts to path
-PATH=$PATH:/home/sam/scripts-in-path
+PATH=$PATH:$HOME/scripts-in-path
 
