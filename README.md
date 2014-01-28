@@ -10,4 +10,5 @@ To install the configuration files, simply run `setup.sh`.  This does the follow
 3. Various other config files are symlinked from the home directory to the ones in `more-home-dir-config`
 4. The scripts-in-path setup script is run.  This puts symlinks to useful scripts into `~/scripts-in-path`.  This folder is added to the path by one of the included bashrc files above.  You can see the linked scripts in the `scripts-in-path` folder in this repo.
 
-In future, this may do more than just set up config.  For example, giving the option to install programs or configure Apache.  This is a good starting point, though!
+If you want to automatically install programs, run `install-programs.sh`.
+
