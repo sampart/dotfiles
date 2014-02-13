@@ -1,5 +1,4 @@
-Sam's dotfiles
-================
+# Sam's dotfiles
 
 Based on the idea behind https://github.com/olorton/dotfiles, this is effectively a backup of config, with a mechanism to automatically apply the config to a new machine.
 
@@ -12,3 +11,23 @@ To install the configuration files, simply run `setup.sh`.  This does the follow
 
 If you want to automatically install programs, run `install-programs.sh`.
 
+## Other config
+
+Some config doesn't really lend itself to automated installation; that is simply documented here instead.
+
+### Rockmongo
+
+[RockMongo](http://rockmongo.com) can be configured to connect to external servers as well as ones running on localhost.  That is done with port-forwarding.  For example, you might have a section like the following in `config.php`:
+
+    $MONGO["servers"][$i]["mongo_name"] = "My remote server";
+    $MONGO["servers"][$i]["mongo_host"] = "localhost";
+    $MONGO["servers"][$i]["mongo_port"] = "27777";
+    $MONGO["servers"][$i]["control_users"]["admin"] = "admin";
+    $MONGO["servers"][$i]["mongo_auth"] = false;
+    $i ++;
+
+Notice the funny port?  This remote server will be available to RockMongo if you first open an SSH tunnel with a command like this:
+
+    ssh user@my.remote.server -L 27777:localhost:27017
+
+This makes the remote server's `localhost:27017` (i.e. its Mongo instance) available locally on port 27777.
