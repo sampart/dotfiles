@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# PR been merged on github?  This will checkout stash, $1 || develop, git pull, switch back to the branch you were on and then rebase || $2. Don't forget to pop the stash
+
+# Thanks http://stackoverflow.com/a/1593487/328817
+branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"; # detached HEAD
+branch_name=${branch_name##refs/heads/};
+
+if [ "$branch_name" = "develop" ] || [ "$branch_name" = "master" ]
+then
+    echo "Only for feature branches!";
+    exit 1;
+fi
+
+git stash save -u
+
+target_branch="$1"
+if [ -z "$target_branch" ]
+then
+    target_branch="develop";
+fi
+
+merge_strategy="$2"
+if [ -z "$merge_strategy" ]
+then
+    merge_strategy="rebase";
+fi
+
+git checkout $target_branch
+if [ "$?" != "0" ]
+then
+    exit 1;
+fi
+
+git pull
+git checkout $branch_name
+if [ "$?" != "0" ]
+then
+    exit 1;
+fi
+
+git $merge_strategy $target_branch
+
+echo
+echo "Updated $branch_name from latest version of $target_branch."
+echo
+echo "Don't forget to git stash pop"
+echo
