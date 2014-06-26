@@ -44,5 +44,5 @@ git $merge_strategy $target_branch
 echo
 echo "Updated $branch_name from latest version of $target_branch."
 echo
-echo "Don't forget to git stash pop"
+echo "Don't forget to git stash pop if changes were stashed"
 echo
