@@ -5,12 +5,11 @@
 	helper = cache
 [diff]
 	tool = bc3
-[difftool "bc3"]
-	cmd = /home/sam/git-bcompare.sh
 [color]
 	ui = auto
 [difftool]
 	prompt = false
+	bc3 = trustExitCode
 [core]
 	excludesfile = /home/sam/.gitignore
 [alias]
