@@ -108,6 +108,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Make it possible to use PHPStorm debugger for PHPUnit and Behat
+# http://www.stephenrhoades.com/?p=600
+export XDEBUG_CONFIG="idekey=phpstorm-xdebug";
+
 source /home/sam/.bashrc-includes/add-to-path
 source /home/sam/.bashrc-includes/git-settings
 source /home/sam/.bashrc-includes/colourful-man-pages
