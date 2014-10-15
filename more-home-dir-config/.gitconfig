@@ -21,5 +21,7 @@
 	continue = rebase --continue
 	cont = rebase --continue
 	update = commit -a --amend -C HEAD
+	re = rebase -i develop
+	sdl = !git status && sleep 0.7 &&git dl
 [push]
 	default = current
