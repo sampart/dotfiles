@@ -23,6 +23,6 @@
 	update = commit -a --amend -C HEAD
 	re = rebase -i develop
 	sdl = !git status && sleep 0.7 &&git dl
-	co = checkout
+	ch = checkout
 [push]
 	default = current
