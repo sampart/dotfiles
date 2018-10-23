@@ -27,3 +27,5 @@
 	tl = for-each-ref --sort='*authordate' --format='%(taggerdate:short) | %(taggername) | %(tag) | %(contents:subject)' refs/tags
 [push]
 	default = current
+[pager]
+	branch = false
