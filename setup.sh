@@ -58,3 +58,10 @@ printf '\n'
 # ================================
 
 $DOTFILES_ROOT/scripts-in-path/setup.sh
+
+# ================================
+# Other setup
+# ================================
+
+# Enable "new document" in Nautilus context menu
+touch ~/Templates/Empty\ Document
