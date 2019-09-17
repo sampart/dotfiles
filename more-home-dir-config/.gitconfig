@@ -25,6 +25,7 @@
 	sdl = !git status && sleep 0.7 &&git dl
 	ch = checkout
 	tl = for-each-ref --sort='*authordate' --format='%(taggerdate:short) | %(taggername) | %(tag) | %(contents:subject)' refs/tags
+	fp = push --force-with-lease
 [push]
 	default = current
 [pager]
