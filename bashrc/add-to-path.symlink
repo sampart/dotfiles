@@ -4,3 +4,6 @@ PATH=$PATH:/opt/vagrant/bin
 # Add useful scripts to path
 PATH=$PATH:$HOME/scripts-in-path
 
+# Add aliases
+alias rm=safe-rm
+
