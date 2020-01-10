@@ -21,7 +21,7 @@
 	continue = rebase --continue
 	cont = rebase --continue
 	update = commit -a --amend -C HEAD
-	re = rebase -i develop
+	re = rebase -i master
 	sdl = !git status && sleep 0.7 &&git dl
 	ch = checkout
 	tl = for-each-ref --sort='*authordate' --format='%(taggerdate:short) | %(taggername) | %(tag) | %(contents:subject)' refs/tags
