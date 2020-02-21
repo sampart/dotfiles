@@ -1,3 +1,6 @@
 *~
 venv
 .DS_Store
+
+# VSCode
+__debug_bin
