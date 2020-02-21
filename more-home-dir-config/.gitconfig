@@ -26,6 +26,7 @@
 	ch = checkout
 	tl = for-each-ref --sort='*authordate' --format='%(taggerdate:short) | %(taggername) | %(tag) | %(contents:subject)' refs/tags
 	fp = push --force-with-lease
+	track = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
 [push]
 	default = current
 [pager]
