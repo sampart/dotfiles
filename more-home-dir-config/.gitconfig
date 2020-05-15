@@ -27,6 +27,7 @@
 	tl = for-each-ref --sort='*authordate' --format='%(taggerdate:short) | %(taggername) | %(tag) | %(contents:subject)' refs/tags
 	fp = push --force-with-lease
 	track = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
+	sha = "!git rev-parse HEAD | tr -d '\n' | pbcopy && echo \"`git rev-parse HEAD | tr -d '\n'` copied to clipboard\""
 [push]
 	default = current
 [pager]
