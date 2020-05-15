@@ -113,5 +113,4 @@ fi
 export XDEBUG_CONFIG="idekey=phpstorm-xdebug";
 
 source /home/sam/.bashrc-includes/add-to-path
-source /home/sam/.bashrc-includes/git-settings
 source /home/sam/.bashrc-includes/colourful-man-pages
