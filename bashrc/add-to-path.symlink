@@ -1,6 +1,3 @@
-# Add Vagrant to path
-PATH=$PATH:/opt/vagrant/bin
-
 # Add useful scripts to path
 PATH=$PATH:$HOME/scripts-in-path
 
