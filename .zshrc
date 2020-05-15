@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Other config from dotfiles
 # TODO update dotfiles to work with zsh
-source /home/sam/.bashrc-includes/add-to-path
+source /home/sam/.zshrc-includes/add-to-path
 
 # Stop pasted text being highlighted
 # https://unix.stackexchange.com/questions/331850/zsh-selects-a-pasted-text
