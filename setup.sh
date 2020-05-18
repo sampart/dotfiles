@@ -10,14 +10,14 @@
 echo "\033[32mMain dotfiles install script started..."
 echo "\033[0m"
 
-DOTFILES_ROOT="`pwd`"
+DOTFILES_ROOT="$(pwd)"
 
 # ===================
 # Helper functions
 # ===================
 
-function generic_install {
-  (which brew && brew install $1) || sudo apt install $1
+generic_install() {
+  (which brew && brew install "$1") || sudo apt install "$1"
 }
 
 # ===================
@@ -41,12 +41,12 @@ printf "$DOTFILES_ROOT/.zshrc copied to $HOME/.zshrc\n"
 mkdir -p $HOME/.zshrc-includes
 
 # symlink zshrc include files to their directory
-for source in `find $DOTFILES_ROOT/zshrc -name \*.symlink`
+for source in $(find $DOTFILES_ROOT/zshrc -name \*.symlink)
 do
-  dest="$HOME/.zshrc-includes/`basename \"${source%.*}\"`"
+  dest="$HOME/.zshrc-includes/$(basename \"${source%.*}\")"
 
-  rm -rf $dest
-  ln -s $source $dest
+  rm -rf "$dest"
+  ln -s "$source" "$dest"
   printf "symlinked $source to $dest\n"
 done
 
@@ -75,7 +75,7 @@ find . -maxdepth 1 -type f -exec ln -s $DOTFILES_ROOT/more-home-dir-config/{} $H
 
 cd $DOTFILES_ROOT
 
-echo "Other home dir config files symlinked\n"
+printf "Other home dir config files symlinked\n"
 
 # ================================
 # Run installers for other things
