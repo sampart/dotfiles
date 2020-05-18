@@ -16,7 +16,7 @@ DOTFILES_ROOT="`pwd`"
 # Basic shell things
 # ===================
 
-echo "Basic shell things\n"
+echo "Basic shell things..."
 
 # copy .zshrc itself
 cp $DOTFILES_ROOT/.zshrc $HOME/.zshrc
@@ -40,6 +40,8 @@ printf '\n'
 # Other home dir config files
 # ============================
 
+echo "Other home dir config files..."
+
 cd more-home-dir-config
 
 # first delete the existing versions of these files in home
@@ -51,7 +53,6 @@ find . -type f -exec ln -s $DOTFILES_ROOT/more-home-dir-config/{} $HOME/{} \;
 cd $DOTFILES_ROOT
 
 echo "Other home dir config files symlinked\n"
-printf '\n'
 
 # ================================
 # Run installers for other things
@@ -63,5 +64,9 @@ $DOTFILES_ROOT/scripts-in-path/setup.sh
 # Other setup
 # ================================
 
+echo "Other setup..."
+
 # Enable "new document" in Nautilus context menu
 touch ~/Templates/Empty\ Document
+
+echo "Done"
