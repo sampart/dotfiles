@@ -8,9 +8,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Other themes I like (best first)
+#ZSH_THEME="agnoster" # if using a dark terminal
 #ZSH_THEME="spaceship" # prompt too far left - neck strain - but shows icon for stashes
 
 DEFAULT_USER="sam"
