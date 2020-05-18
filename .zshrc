@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/sam/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -104,8 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Other config from dotfiles
-# TODO update dotfiles to work with zsh
-source /home/sam/.zshrc-includes/add-to-path
+source $HOME/.zshrc-includes/add-to-path
 
 # Stop pasted text being highlighted
 # https://unix.stackexchange.com/questions/331850/zsh-selects-a-pasted-text
