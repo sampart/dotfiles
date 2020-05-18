@@ -43,10 +43,10 @@ printf '\n'
 cd more-home-dir-config
 
 # first delete the existing versions of these files in home
-find -type f -exec rm $HOME/{} \;
+find . -type f -exec rm $HOME/{} \;
 
 # now symlink the new ones
-find -type f -exec ln -s $DOTFILES_ROOT/more-home-dir-config/{} $HOME/{} \;
+find . -type f -exec ln -s $DOTFILES_ROOT/more-home-dir-config/{} $HOME/{} \;
 
 cd $DOTFILES_ROOT
 
