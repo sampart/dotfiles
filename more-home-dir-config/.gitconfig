@@ -11,7 +11,7 @@
 	prompt = false
 	bc3 = trustExitCode
 [core]
-	excludesfile = /home/sam/.gitignore
+	excludesfile = ~/.gitignore
 [alias]
 	br = branch
 	dl = difftool
