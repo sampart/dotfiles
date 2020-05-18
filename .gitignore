@@ -1,0 +1,2 @@
+# .gitconfig_os is created when actually running the dotfiles script; don't commit
+more-home-dir-config/.gitconfig_os

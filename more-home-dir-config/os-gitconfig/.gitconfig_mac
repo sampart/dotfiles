@@ -1,0 +1,17 @@
+# OS-specific git configuration for Mac
+
+[credential]
+	helper = osxkeychain
+[diff]
+	tool = bcomp
+[difftool "bcomp"]
+	trustExitCode = true
+	cmd = `/usr/local/bin/bcomp $LOCAL $REMOTE`
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = ~/.stCommitMsg

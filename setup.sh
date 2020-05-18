@@ -60,11 +60,18 @@ echo "Other home dir config files..."
 
 cd more-home-dir-config
 
+# copy over the right OS-specific git config
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  cp os-gitconfig/.gitconfig_mac ./.gitconfig_os
+else
+  cp os-gitconfig/.gitconfig_linux ./.gitconfig_os
+fi
+
 # first delete the existing versions of these files in home
-find . -type f -exec rm $HOME/{} \;
+find . -maxdepth 1 -type f -exec rm -f $HOME/{} \;
 
 # now symlink the new ones
-find . -type f -exec ln -s $DOTFILES_ROOT/more-home-dir-config/{} $HOME/{} \;
+find . -maxdepth 1 -type f -exec ln -s $DOTFILES_ROOT/more-home-dir-config/{} $HOME/{} \;
 
 cd $DOTFILES_ROOT
 

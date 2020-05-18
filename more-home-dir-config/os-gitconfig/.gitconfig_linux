@@ -1,0 +1,9 @@
+# OS-specific git configuration for Linux
+
+[credential]
+	helper = cache
+[diff]
+	tool = bc3
+[difftool]
+  prompt = false
+  bc3 = trustExitCode
