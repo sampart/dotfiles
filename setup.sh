@@ -13,8 +13,24 @@ echo "\033[0m"
 DOTFILES_ROOT="`pwd`"
 
 # ===================
+# Helper functions
+# ===================
+
+function generic_install {
+  (which brew && brew install $1) || sudo apt install $1
+}
+
+# ===================
 # Basic shell things
 # ===================
+
+if [ "$1" != "--no-install" ]; then
+  echo "Installing required tools..."
+  generic_install zsh
+  generic_install safe-rm
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  echo "Done\n"
+fi
 
 echo "Basic shell things..."
 
