@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Other config from dotfiles
 source $HOME/.zshrc-includes/add-to-path
+source $HOME/.zshrc-includes/colourful-man-pages
 
 # Stop pasted text being highlighted
 # https://unix.stackexchange.com/questions/331850/zsh-selects-a-pasted-text
