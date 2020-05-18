@@ -87,9 +87,9 @@ $DOTFILES_ROOT/scripts-in-path/setup.sh
 # Other setup
 # ================================
 
-echo "Other setup..."
-
-# Enable "new document" in Nautilus context menu
-touch ~/Templates/Empty\ Document
-
-echo "Done"
+if [[ -d "~/Templates" ]]; then
+  echo "Other setup..."
+  # Enable "new document" in Nautilus context menu
+  touch ~/Templates/Empty\ Document 
+  echo "Done"
+fi
