@@ -13,14 +13,14 @@ mkdir -p $HOME/scripts-in-path
 fullPath=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd || /bin/pwd || pwd)
 
 # symlink files to the new directory
-thisdir=$(dirname $0)
-for source in `find $thisdir -maxdepth 2 -name \*.symlink`
+for source in `find $fullPath -maxdepth 2 -name \*.symlink`
 do
-  dest="$HOME/scripts-in-path/`basename \"${source%.*}\"`"
+  sourceFile=`basename $source`
+  dest="$HOME/scripts-in-path/${sourceFile%.*}"
   
   rm -rf $dest
-  ln -s $fullPath/$source $dest
-  printf "symlinked $fullPath/$source to $dest\n"
+  ln -s $fullPath/$sourceFile $dest
+  printf "symlinked $fullPath/$sourceFile to $dest\n"
 done
 
 printf '\n'
