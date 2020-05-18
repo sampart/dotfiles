@@ -42,7 +42,7 @@ printf '\n'
 
 cd more-home-dir-config
 
-# first delete the existing files in home
+# first delete the existing versions of these files in home
 find -type f -exec rm $HOME/{} \;
 
 # now symlink the new ones
