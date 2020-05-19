@@ -111,3 +111,7 @@ source $HOME/.zshrc-includes/colourful-man-pages
 # Stop pasted text being highlighted
 # https://unix.stackexchange.com/questions/331850/zsh-selects-a-pasted-text
 unset zle_bracketed_paste
+
+export EDITOR=nano
+export VISUAL="$EDITOR"
+
