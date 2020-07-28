@@ -31,3 +31,5 @@
         insteadOf = https://github.com/
 [include]
     path = .gitconfig_os
+[init]
+	defaultBranch = main
