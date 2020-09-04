@@ -45,7 +45,7 @@ mkdir -p $HOME/.zshrc-includes
 # symlink zshrc include files to their directory
 for source in $(find $DOTFILES_ROOT/zshrc -name \*.symlink)
 do
-  dest="$HOME/.zshrc-includes/$(basename \"${source%.*}\")"
+  dest="$HOME/.zshrc-includes/$(basename "${source%.*}")"
 
   rm -f "$dest"
   ln -s "$source" "$dest"
