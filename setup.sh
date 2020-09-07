@@ -43,6 +43,7 @@ cp $DOTFILES_ROOT/.zshrc $HOME/.zshrc
 printf "$DOTFILES_ROOT/.zshrc copied to $HOME/.zshrc\n"
 
 mkdir -p $HOME/.zshrc-includes
+touch "$HOME/.zshrc-includes/machine-specific-config"
 
 # symlink zshrc include files to their directory
 for source in $(find $DOTFILES_ROOT/zshrc -name \*.symlink)

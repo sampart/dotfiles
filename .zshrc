@@ -112,6 +112,9 @@ source $HOME/.zshrc-includes/colourful-man-pages
 # https://unix.stackexchange.com/questions/331850/zsh-selects-a-pasted-text
 unset zle_bracketed_paste
 
+# A place for config that we don't want to save into dotfiles
+source $HOME/.zshrc-includes/machine-specific-config
+
 export EDITOR=nano
 export VISUAL="$EDITOR"
 
