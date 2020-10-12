@@ -28,6 +28,9 @@ generic_install() {
 
 if [ "$1" != "--no-install" ]; then
   echo "Installing required tools..."
+  if [[ "$OSTYPE" = "darwin"* ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
   generic_install zsh
   generic_install safe-rm
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
