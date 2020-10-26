@@ -93,7 +93,15 @@ $DOTFILES_ROOT/scripts-in-path/setup.sh
 # Other setup
 # ================================
 
-if [[ -d "~/Templates" ]]; then
+if [[ ! -f ~/.local/bin/shellmarks.sh ]]; then
+  git clone git://github.com/Bilalh/shellmarks.git
+  cd shellmarks || (echo "shellmarks install failed"; exit)
+  make install
+  cd ..
+  rm -rf ./shellmarks
+fi
+
+if [[ -d ~/Templates ]]; then
   echo "Other setup..."
   # Enable "new document" in Nautilus context menu
   touch ~/Templates/Empty\ Document 

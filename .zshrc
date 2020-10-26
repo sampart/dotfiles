@@ -74,7 +74,7 @@ DEFAULT_USER="sam"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,6 +111,9 @@ source $HOME/.zshrc-includes/colourful-man-pages
 # Stop pasted text being highlighted
 # https://unix.stackexchange.com/questions/331850/zsh-selects-a-pasted-text
 unset zle_bracketed_paste
+
+# https://github.com/Bilalh/shellmarks
+source ~/.local/bin/shellmarks.sh
 
 # A place for config that we don't want to save into dotfiles
 source $HOME/.zshrc-includes/machine-specific-config
