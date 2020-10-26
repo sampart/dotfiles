@@ -19,7 +19,7 @@ DOTFILES_ROOT=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd 
 # ===================
 
 generic_install() {
-  (which brew && brew install "$1") || sudo apt install "$1"
+  (which brew > /dev/null && brew install "$1") || sudo apt install "$1"
 }
 
 # ===================
@@ -29,7 +29,7 @@ generic_install() {
 if [ "$1" != "--no-install" ]; then
   echo "Installing required tools..."
   if [[ "$OSTYPE" = "darwin"* ]]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   fi
   generic_install zsh
   generic_install safe-rm
