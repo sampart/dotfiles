@@ -36,3 +36,5 @@
     path = .gitconfig_os
 [init]
 	defaultBranch = main
+[pull]
+	ff = only
