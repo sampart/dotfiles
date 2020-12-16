@@ -23,7 +23,7 @@
 	fp = push --force-with-lease
 	track = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
 	sha = "!git rev-parse HEAD | tr -d '\n' | pbcopy && echo \"`git rev-parse HEAD | tr -d '\n'` copied to clipboard\""
-  numbered-branches = "!git branch | awk ' !x[$0]++' | head -n5 | nl"
+	numbered-branches = "!git branch | awk ' !x[$0]++' | head -n8 | nl"
 	recent = "!sh -c 'branches=$(git numbered-branches) && printf \"Recent Branches:\n$branches\n\" && echo \"Checkout a branch?\" && read branchn && branch=$(printf \"$branches\" | awk \"NR==$branchn\" | cut -f 2) && git checkout $branch'"
 	brr = recent
 [push]
