@@ -38,3 +38,5 @@
 	defaultBranch = main
 [pull]
 	ff = only
+[fetch]
+	prune = true
