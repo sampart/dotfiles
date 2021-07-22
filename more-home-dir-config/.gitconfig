@@ -31,8 +31,6 @@
 	default = current
 [pager]
 	branch = false
-[url "git@github.com:"]
-        insteadOf = https://github.com/
 [include]
     path = .gitconfig_os
 [init]
