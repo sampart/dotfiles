@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # bootstrap installs the following:
 #  - copies over the basic .zshrc (although there's a lot in there, most of it is from the basic vanilla one, so I wanted to leave it as is)
