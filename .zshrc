@@ -118,6 +118,11 @@ source ~/.local/bin/shellmarks.sh
 # A place for config that we don't want to save into dotfiles
 source $HOME/.zshrc-includes/machine-specific-config
 
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+fi
+
 export EDITOR=nano
 export VISUAL="$EDITOR"
 

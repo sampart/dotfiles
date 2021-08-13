@@ -48,8 +48,6 @@ if [ "$1" != "--no-install" ]; then
 
   if [[ "$OSTYPE" != "darwin"* ]]; then
     which xclip || generic_install xclip
-    alias pbcopy='xclip -selection clipboard'
-    alias pbpaste='xclip -selection clipboard -o'
   fi
 
   echo "Done\n"
@@ -75,12 +73,6 @@ do
 done
 
 chsh -s /usr/bin/zsh
-
-# Use a different theme on Codespaces so it's
-# obvious where you are!
-if [[ "$CODESPACES" = "true" ]]; then
-  source ~/.oh-my-zsh/themes/zhann.zsh-theme
-fi
 
 printf '\n'
 
