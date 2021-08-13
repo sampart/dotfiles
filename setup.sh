@@ -46,6 +46,12 @@ if [ "$1" != "--no-install" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   fi
 
+  if [[ "$OSTYPE" != "darwin"* ]]; then
+    generic_install xclip
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+  fi
+
   echo "Done\n"
 fi
 
