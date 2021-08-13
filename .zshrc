@@ -127,6 +127,13 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
   alias pbpaste='xclip -selection clipboard -o'
 fi
 
+# Codespaces don't have a way of making sound, but having a command
+# to make a sound is useful for knowing when things have finished.
+# This is really hacky, but it works.
+if [[ "$CODESPACES" = "true" ]]; then
+  alias say="ssh -p2900 -t sam@localhost say done"
+fi
+
 export EDITOR=nano
 export VISUAL="$EDITOR"
 
