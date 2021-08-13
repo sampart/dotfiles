@@ -47,7 +47,7 @@ if [ "$1" != "--no-install" ]; then
   fi
 
   if [[ "$OSTYPE" != "darwin"* ]]; then
-    generic_install xclip
+    which xclip || generic_install xclip
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
   fi
