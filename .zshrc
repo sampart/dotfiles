@@ -8,7 +8,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+if [[ "$CODESPACES" = "true" ]]; then
+  ZSH_THEME="zhann"
+else
+  ZSH_THEME="robbyrussell"
+fi
 
 # Other themes I like (best first)
 #ZSH_THEME="agnoster" # if using a dark terminal
