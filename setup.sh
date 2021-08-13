@@ -70,6 +70,14 @@ do
   printf "symlinked $source to $dest\n"
 done
 
+chsh -s /usr/bin/zsh
+
+# Use a different theme on Codespaces so it's
+# obvious where you are!
+if [[ "$CODESPACES" = "true" ]]; then
+  source ~/.oh-my-zsh/themes/zhann.zsh-theme
+fi
+
 printf '\n'
 
 # ============================
