@@ -129,10 +129,9 @@ fi
 
 # Codespaces don't have a way of making sound, but having a command
 # to make a sound is useful for knowing when things have finished.
-# This is really hacky, but it works.
-# Setup instructions and more details: https://stackoverflow.com/a/68771402/328817
+# Adapted from https://superuser.com/a/1274810/126533
 if [[ "$CODESPACES" = "true" ]]; then
-  alias say="ssh -o StrictHostKeyChecking=accept-new -p2900 -t sam@localhost say done"
+  alias say="bash -c \"printf 'done' >> /dev/tcp/localhost/2900\""
 fi
 
 export EDITOR=nano
