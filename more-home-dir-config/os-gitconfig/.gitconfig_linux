@@ -7,3 +7,6 @@
 [difftool]
   prompt = false
   bc3 = trustExitCode
+# https://stackoverflow.com/a/55891251/328817
+[pager]
+  diff = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight.perl | less
