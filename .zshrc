@@ -130,6 +130,7 @@ fi
 # Codespaces don't have a way of making sound, but having a command
 # to make a sound is useful for knowing when things have finished.
 # Adapted from https://superuser.com/a/1274810/126533
+# The command to run locally is `while true; do nc -l 2900 | say; done`
 if [[ "$CODESPACES" = "true" ]]; then
   alias say="bash -c \"printf 'done' >> /dev/tcp/localhost/2900\""
 fi
