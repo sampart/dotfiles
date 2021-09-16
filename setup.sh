@@ -84,6 +84,11 @@ echo "Other home dir config files..."
 
 OTHER_CONFIG=$DOTFILES_ROOT/more-home-dir-config
 
+# On Linux, make the diff-highlight executable if it doesn't already exist
+if [[ "$OSTYPE" != "darwin"* && ! -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight ]]; then
+  sudo make -B -C /usr/share/doc/git/contrib/diff-highlight diff-highlight
+fi
+
 # copy over the right OS-specific git config
 if [[ "$OSTYPE" == "darwin"* ]]; then
   cp "$OTHER_CONFIG"/os-gitconfig/.gitconfig_mac "$OTHER_CONFIG"/.gitconfig_os
