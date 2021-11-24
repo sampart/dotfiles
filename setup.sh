@@ -19,7 +19,7 @@ DOTFILES_ROOT=$(exec 2>/dev/null;cd -- $(dirname "$0"); unset PWD; /usr/bin/pwd 
 # ===================
 
 generic_install() {
-  (which brew > /dev/null && brew install "$1") || sudo apt install -y "$1"
+  (which brew > /dev/null && brew install "$1") || sudo apt install -o DPkg::Options::="--force-confnew" -y "$1"
 }
 
 # ===================
