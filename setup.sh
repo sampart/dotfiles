@@ -72,7 +72,7 @@ do
   printf "symlinked $source to $dest\n"
 done
 
-chsh -s "$(which zsh)" "$(whoami)"
+sudo chsh -s "$(which zsh)" "$(whoami)"
 
 printf '\n'
 
