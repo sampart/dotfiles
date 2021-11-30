@@ -9,6 +9,5 @@
   bc3 = trustExitCode
 # https://stackoverflow.com/a/55891251/328817
 # Avoid this bug by running the executable rather than the perl script: https://bugs.launchpad.net/ubuntu/+source/git/+bug/1713690
-# TODO change the else part to `cat | less` once all my devcontainers have less
 [pager]
-  diff = [ -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight ] { && /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less } || cat
+  diff = [ -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight ] { && /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less } || cat | less
