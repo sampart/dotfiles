@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+import argparse
+import subprocess
+
+###############################################################################
+# Switches to the default branch and pulls the latest changes.
+###############################################################################
+
+_DEFAULT_REMOTE = "origin"
+_PREFIX = f"{_DEFAULT_REMOTE}/"
+
+def parse_arguments():
+	parser = argparse.ArgumentParser(description="Check out and pull the default branch.")
+	return parser.parse_args()
+
+def _update():
+	default_branch = subprocess.check_output(["git", "symbolic-ref", "--short", "refs/remotes/origin/HEAD"]).decode("utf-8").strip()
+	if not default_branch.startswith(_PREFIX):
+		raise Exception(f"Default reference didn't start with {_PREFIX}.")
+	default_branch = default_branch[len(_PREFIX):]
+	subprocess.check_call(["git", "checkout", default_branch])
+	subprocess.check_call(["git", "pull"])
+
+def main():
+	parse_arguments()
+	try:
+		_update()
+	except subprocess.CalledProcessError as e:
+		subprocess.check_call(["git", "remote", "set-head", _DEFAULT_REMOTE, "--auto"])
+		_update()
+
+if __name__ == "__main__":
+	main()
