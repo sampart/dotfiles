@@ -1,0 +1,4 @@
+#!/bin/bash
+# Get the database ID of a GitHub repo
+
+gh api repos/"$1" | jq .id
