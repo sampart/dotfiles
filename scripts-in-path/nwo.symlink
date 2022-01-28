@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+set -eu
+data="$(gh api "repositories/$1")"
+echo "$data" | jq --raw-output ".full_name"
