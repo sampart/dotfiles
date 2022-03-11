@@ -34,7 +34,10 @@ if [ "$1" != "--no-install" ]; then
   which zsh || generic_install zsh
   which safe-rm || generic_install safe-rm
 
-  if [[ ! -d ~/.oh-my-zsh ]]; then
+  if [[ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]]; then
+    if [[ -d ~/.oh-my-zsh ]]; then
+      rm -rf ~/.oh-my-zsh
+    fi
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
 
