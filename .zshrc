@@ -138,3 +138,4 @@ fi
 export EDITOR=nano
 export VISUAL="$EDITOR"
 
+export GITHUB_CODESPACES_CUSTOM_PORT=1
