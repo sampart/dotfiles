@@ -1,0 +1,2 @@
+# turn off local documentation generation for faster gem installs
+gem: --no-document
