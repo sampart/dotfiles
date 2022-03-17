@@ -139,3 +139,9 @@ export EDITOR=nano
 export VISUAL="$EDITOR"
 
 export GITHUB_CODESPACES_CUSTOM_PORT=1
+
+# If rbenv is installed, ensure that it's in the path and initialised
+if [ -x "$(command -v rbenv)" ]; then
+  echo $PATH | grep rbenv >/dev/null || export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
