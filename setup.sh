@@ -123,11 +123,16 @@ $DOTFILES_ROOT/scripts-in-path/setup.sh
 # ================================
 
 if [[ ! -f ~/.local/bin/shellmarks.sh ]]; then
-  git clone git://github.com/Bilalh/shellmarks.git
-  cd shellmarks || (echo "shellmarks install failed"; exit)
-  make install
-  cd ..
-  rm -rf ./shellmarks
+  git clone https://github.com/Bilalh/shellmarks.git
+  if [[ -d shellmarks ]]; then
+    (
+    cd shellmarks
+    make install
+    )
+    rm -rf ./shellmarks
+  else
+    echo "shellmarks install failed"
+  fi
 fi
 
 if [[ -d ~/Templates ]]; then
