@@ -138,7 +138,10 @@ fi
 export EDITOR=nano
 export VISUAL="$EDITOR"
 
-export GITHUB_CODESPACES_CUSTOM_PORT=1
+if [[ "$CODESPACES" = "true" ]]; then
+  export GITHUB_CODESPACES_CUSTOM_PORT=1
+  export CODESPACES_DEFAULT_CUSTOM_PORT=1
+fi
 
 # If rbenv is installed, ensure that it's in the path and initialised
 if [ -x "$(command -v rbenv)" ]; then
