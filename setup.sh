@@ -99,9 +99,9 @@ else
   cp "$OTHER_CONFIG"/os-gitconfig/.gitconfig_linux "$OTHER_CONFIG"/.gitconfig_os
 fi
 
-# connect to github via SSH unless in a Codespace
-if [[ "$CODESPACES" != "true" ]]; then
-  git config --global url.git@github.com:.insteadOf https://github.com/
+# Remove rule to connect to github via SSH if in a Codespace
+if [[ "$CODESPACES" = "true" ]]; then
+  git config --global --unset url.git@github.com:.insteadOf
 fi
 
 # first delete the existing versions of these files in home
