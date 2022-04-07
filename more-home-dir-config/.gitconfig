@@ -47,9 +47,3 @@
 	required = true
 [github]
 	user = sampart
-[credential]
-	helper = osxkeychain
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-[maintenance]
-	repo = /Users/sam/code/github
