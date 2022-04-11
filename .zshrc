@@ -139,6 +139,16 @@ export EDITOR=nano
 export VISUAL="$EDITOR"
 
 if [[ "$CODESPACES" = "true" ]]; then
+  if [ -z "$(git config --get core.editor)" ] && [ -z "${GIT_EDITOR}" ]; then
+    if  [ "${TERM_PROGRAM}" = "vscode" ]; then
+        if [[ -n $(command -v code-insiders) &&  -z $(command -v code) ]]; then
+            export GIT_EDITOR="code-insiders --wait"
+        else
+            export GIT_EDITOR="code --wait"
+        fi
+    fi
+  fi
+
   export GITHUB_CODESPACES_CUSTOM_PORT=1
   export CODESPACES_DEFAULT_CUSTOM_PORT=1
 fi
