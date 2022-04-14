@@ -151,6 +151,7 @@ if [[ "$CODESPACES" = "true" ]]; then
 
   export GITHUB_CODESPACES_CUSTOM_PORT=1
   export CODESPACES_DEFAULT_CUSTOM_PORT=1
+  export CODESPACES_BROWSER_OPEN_OPT_OUT=1
 fi
 
 # If rbenv is installed, ensure that it's in the path and initialised
