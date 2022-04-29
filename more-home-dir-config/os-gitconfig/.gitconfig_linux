@@ -10,4 +10,4 @@
 # https://stackoverflow.com/a/55891251/328817
 # Avoid this bug by running the executable rather than the perl script: https://bugs.launchpad.net/ubuntu/+source/git/+bug/1713690
 [pager]
-  diff = [ -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight ] && /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less || cat | less
+  diff = [ -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight ] && perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less || cat | less
