@@ -76,6 +76,7 @@ do
 done
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
+source "$HOME/.zshrc"
 
 printf '\n'
 
