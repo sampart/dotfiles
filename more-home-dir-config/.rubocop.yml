@@ -4,3 +4,5 @@ Layout/FirstArgumentIndentation:
   Enabled: false
 Style/StringLiterals:
   Enabled: false
+Style/ModuleFunction:
+  Enabled: false
