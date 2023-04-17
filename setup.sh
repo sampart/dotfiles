@@ -76,4 +76,5 @@ do
 done
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
+echo "If the default shell changed, you may need to log out and in again for this to take effect."
 ./zsh-setup.sh
