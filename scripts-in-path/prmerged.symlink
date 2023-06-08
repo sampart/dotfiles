@@ -1,31 +1,47 @@
 #!/bin/bash
 
-# PR been merged on github?  This will checkout $1 || develop, git pull, and then delete the branch you were on.
+# PR been merged on github?  This will checkout $1 || main, git pull, and then delete the branch you were on.
+# Pass -f for force delete (e.g. if the PR was squash merged).
 
 # Thanks http://stackoverflow.com/a/1593487/328817
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"; # detached HEAD
 branch_name=${branch_name##refs/heads/};
 
-if [ "$branch_name" = "develop" ] || [ "$branch_name" = "master" ]
+if [ "$branch_name" = "develop" ] || [ "$branch_name" = "master" ] || [ "$branch_name" = "main" ]
 then
     echo "Only for feature branches!";
     exit 1;
 fi
 
+force_mode="false"
+first_arg="$1"
+if [ "$first_arg" = "-f" ]
+then
+    force_mode="true"
+    shift
+fi
+
 target_branch="$1"
 if [ -z "$target_branch" ]
 then
-    target_branch="develop";
+    target_branch="main";
 fi
 
-git checkout $target_branch
+git checkout "$target_branch"
 if [ "$?" != "0" ]
 then
     exit 1;
 fi
 
 git pull
-git branch -d $branch_name
+
+if [ "$force_mode" = "true" ]
+then
+    git branch -D "$branch_name"
+else
+    git branch -d "$branch_name"
+fi
+
 if [ "$?" != "0" ]
 then
     exit 1;
