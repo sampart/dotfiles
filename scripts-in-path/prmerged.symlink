@@ -6,7 +6,7 @@
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"; # detached HEAD
 branch_name=${branch_name##refs/heads/};
 
-if [ "$branch_name" = "develop" ] || [ "$branch_name" = "master" ]
+if [ "$branch_name" = "develop" ] || [ "$branch_name" = "master" ] || [ "$branch_name" = "main" ]
 then
     echo "Only for feature branches!";
     exit 1;
