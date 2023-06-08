@@ -18,14 +18,14 @@ then
     target_branch="main";
 fi
 
-git checkout $target_branch
+git checkout "$target_branch"
 if [ "$?" != "0" ]
 then
     exit 1;
 fi
 
 git pull
-git branch -d $branch_name
+git branch -d "$branch_name"
 if [ "$?" != "0" ]
 then
     exit 1;
