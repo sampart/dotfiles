@@ -30,6 +30,7 @@
 	m = "!gitm"
 [push]
 	default = current
+	autoSetupRemote = true
 [pager]
 	branch = false
 [include]
