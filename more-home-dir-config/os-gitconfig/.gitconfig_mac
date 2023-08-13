@@ -15,5 +15,3 @@
 	trustExitCode = true
 [pager]
   diff = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
-[url "git@github.com:"]
-	insteadOf = https://github.com/

@@ -43,3 +43,5 @@
 	prune = true
 [github]
 	user = sampart
+[url "git@github.com:"]
+	insteadOf = https://github.com/
