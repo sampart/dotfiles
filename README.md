@@ -2,6 +2,8 @@
 
 Based on the idea behind https://github.com/olorton/dotfiles, this is effectively a backup of config, with a mechanism to automatically apply the config to a new machine.
 
+If you do make use of these dotfiles yourself, make sure you update the user name and email in `.gitconfig` to be you, not me!
+
 To install the configuration files, simply run `setup.sh`.  This does the following:
 
 1. Copies over the `.zshrc` file from this repo to the home directory
