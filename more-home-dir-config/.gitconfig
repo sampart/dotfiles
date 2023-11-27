@@ -1,5 +1,7 @@
 [user]
 	name = Sam Partington
+	# If changing away from work address here,
+	# use the anonymised email address for commits rather than personal one
 	email = sampart@github.com
 [color]
 	ui = auto
