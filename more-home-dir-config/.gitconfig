@@ -45,5 +45,5 @@
 	prune = true
 [github]
 	user = sampart
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+[url "git@github.com:"] # notcodespaces
+	insteadOf = https://github.com/  # notcodespaces
