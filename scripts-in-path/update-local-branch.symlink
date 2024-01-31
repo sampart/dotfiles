@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# PR been merged on github?  This will checkout stash, $1 || develop, git pull, switch back to the branch you were on and then rebase || $2. Don't forget to pop the stash
+# PR been merged on github?  This will stash, checkout $1 || main, git pull, switch back to the branch you were on and then rebase || $2. Don't forget to pop the stash
 
 # Thanks http://stackoverflow.com/a/1593487/328817
 branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"; # detached HEAD
 branch_name=${branch_name##refs/heads/};
 
-if [ "$branch_name" = "develop" ] || [ "$branch_name" = "master" ]
+if [ "$branch_name" = "main" ] || [ "$branch_name" = "master" ]
 then
     echo "Only for feature branches!";
     exit 1;
@@ -17,7 +17,7 @@ git stash save -u
 target_branch="$1"
 if [ -z "$target_branch" ]
 then
-    target_branch="develop";
+    target_branch="main";
 fi
 
 merge_strategy="$2"
