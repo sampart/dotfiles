@@ -155,3 +155,7 @@ if [ -x "$(command -v rbenv)" ]; then
   echo $PATH | grep rbenv >/dev/null || export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
+
+# Stop zsh trying to intercept the ^ in e.g. `git show HEAD^`
+# https://github.com/ohmyzsh/ohmyzsh/issues/449#issuecomment-1466968
+unsetopt extendedglob
