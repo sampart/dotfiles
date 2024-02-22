@@ -10,3 +10,13 @@ To install the configuration files, simply run `setup.sh`.  This does the follow
 2. As this `.zshrc` refers to several other files, rather than just being one monolithic file itself, those referenced files (see the `zshrc` folder in this repo) are also copied, in this case into the `~\zshrc-includes` folder.
 3. Various other config files are symlinked from the home directory to the ones in `more-home-dir-config`
 4. The scripts-in-path setup script is run.  This puts symlinks to useful scripts into `~/scripts-in-path`.  This folder is added to the path by one of the included zshrc files above.  You can see the linked scripts in the `scripts-in-path` folder in this repo.
+
+## Other config notes
+
+I don't manage my SSH config here, but here's a reminder of the config to ensure keys get auto-forwarded to Codespaces:
+
+```text
+Match host localhost user [codespaces-local-user-here]
+  AddKeysToAgent yes
+  ForwardAgent yes
+```
