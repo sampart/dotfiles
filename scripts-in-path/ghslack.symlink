@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Helper to make invoking gh slack with the clipboard easier
+
+gh slack "$1" "$2" | pbcopy
