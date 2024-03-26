@@ -30,6 +30,7 @@
 	brr = recent
 	pr = "!git push && gh pr create -w"
 	m = "!gitm"
+	save = stash --all
 [push]
 	default = current
 	autoSetupRemote = true
@@ -47,3 +48,5 @@
 	user = sampart
 [url "git@github.com:"] # notcodespaces
 	insteadOf = https://github.com/  # notcodespaces
+[rerere]
+	enabled = true
