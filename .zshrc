@@ -159,3 +159,8 @@ fi
 # Stop zsh trying to intercept the ^ in e.g. `git show HEAD^`
 # https://github.com/ohmyzsh/ohmyzsh/issues/449#issuecomment-1466968
 unsetopt extendedglob
+
+# Make it faster
+# https://github.com/zsh-users/zsh-autosuggestions/issues/544
+# https://github.com/zsh-users/zsh-autosuggestions?tab=readme-ov-file#disabling-automatic-widget-re-binding
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
