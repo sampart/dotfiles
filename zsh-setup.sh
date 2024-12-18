@@ -33,13 +33,6 @@ find "$OTHER_CONFIG" -maxdepth 1 -type f -execdir rm -f $HOME/{} \;
 # now symlink the new ones
 find "$OTHER_CONFIG" -maxdepth 1 -type f -execdir ln -s "$OTHER_CONFIG"/{} $HOME/{} \;
 
-## Finally, remove git config lines that we don't want on codespaces
-if [[ "$CODESPACES" == "true" ]]; then
-  # NB --follow-symlinks doesn't work on macs, but we don't need this there anyway
-  sed -i --follow-symlinks '/# notcodespaces/d' "$HOME/.gitconfig"
-fi
-
-
 printf "Other home dir config files symlinked\n"
 
 # ================================
