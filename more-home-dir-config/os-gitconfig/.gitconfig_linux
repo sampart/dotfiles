@@ -11,3 +11,6 @@
 # Avoid this bug by running the executable rather than the perl script: https://bugs.launchpad.net/ubuntu/+source/git/+bug/1713690
 [pager]
   diff = [ -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight ] && perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less || cat | less
+# Makes it work in codespaces
+[url "git@github.com:github/turboscan"]
+	insteadOf = https://github.com/github/turboscan
