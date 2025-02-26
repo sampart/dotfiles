@@ -5,6 +5,10 @@
 	email = sampart@github.com
 [color]
 	ui = auto
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	renames = true
 [difftool]
 	prompt = false
 [core]
@@ -44,7 +48,12 @@
 	ff = only
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
 [github]
 	user = sampart
 [rerere]
 	enabled = true
+[tag]
+	# The default is alphanumeric, but we want 1.10 to come after 1.9
+	sort = version:refname
