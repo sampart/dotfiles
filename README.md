@@ -20,3 +20,7 @@ Match host localhost user [codespaces-local-user-here]
   AddKeysToAgent yes
   ForwardAgent yes
 ```
+
+## Other
+
+- https://til.simonwillison.net/macos/close-terminal-on-ctrl-d
