@@ -34,6 +34,11 @@ if [ "$1" != "--no-install" ]; then
   which zsh || generic_install zsh
   which safe-rm || generic_install safe-rm
 
+  # install git via brew to get contrib stuff like diff-highlight
+  if [[ "$OSTYPE" = "darwin"* ]]; then
+    brew list | grep git > /dev/null || brew install git
+  fi
+
   if [[ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]]; then
     if [[ -d ~/.oh-my-zsh ]]; then
       rm -rf ~/.oh-my-zsh
