@@ -1,0 +1,3 @@
+# Make ctrl-r work in Postgres CLI when installed via Postgres.app
+# https://github.com/PostgresApp/PostgresApp/issues/144#issuecomment-98139482
+bind "^R" em-inc-search-prev
