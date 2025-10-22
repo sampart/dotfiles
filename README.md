@@ -26,3 +26,4 @@ Match host localhost user [codespaces-local-user-here]
 - https://til.simonwillison.net/macos/close-terminal-on-ctrl-d
 - Calendar in menu bar via Raycast: https://www.raycast.com/core-features/calendar
 - MacOS > System Settings > Notifications > Allow notifications when mirroring or sharing the display
+- https://dev.to/k3vout/open-ruby-on-rails-errors-with-vs-code-3c1f
