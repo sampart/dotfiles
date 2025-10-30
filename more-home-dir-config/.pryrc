@@ -5,7 +5,7 @@ puts "Running ~/.pryrc..."
 
 class Object
   def meths
-    (methods - Object.instance_methods).sort
+    (methods - Object.instance_methods - Object.methods).sort
   end
 end
 
