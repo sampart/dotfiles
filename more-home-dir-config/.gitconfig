@@ -9,6 +9,7 @@
 	algorithm = histogram
 	colorMoved = plain
 	renames = true
+	tool = bc
 [difftool]
 	prompt = false
 [core]
@@ -58,3 +59,5 @@
 [tag]
 	# The default is alphanumeric, but we want 1.10 to come after 1.9
 	sort = version:refname
+[difftool "bc"]
+	trustExitCode = true

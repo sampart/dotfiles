@@ -167,3 +167,6 @@ unsetopt extendedglob
 # https://github.com/zsh-users/zsh-autosuggestions/issues/544
 # https://github.com/zsh-users/zsh-autosuggestions?tab=readme-ov-file#disabling-automatic-widget-re-binding
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Fix Rails difftool usage
+THOR_MERGE=bcomp
