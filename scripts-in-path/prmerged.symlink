@@ -14,10 +14,15 @@ then
 fi
 
 force_mode="false"
+rebase_mode="false" # doesn't do a rebase; rather it allows `branch -d` to work if the PR was rebase-merged.
 first_arg="$1"
 if [ "$first_arg" = "-f" ]
 then
     force_mode="true"
+    shift
+elif [ "$first_arg" = "-r" ]
+then
+    rebase_mode="true"
     shift
 fi
 
@@ -25,6 +30,15 @@ target_branch="$1"
 if [ -z "$target_branch" ]
 then
     target_branch="main";
+fi
+
+if [ "$rebase_mode" = "true" ]
+then
+    # If the PR was rebased, we need to fetch origin/main
+    # and then rebase the current version of the branch onto it
+    # before continuing.
+    git fetch origin
+    git rebase origin/"$target_branch"
 fi
 
 git checkout "$target_branch"
