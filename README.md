@@ -13,6 +13,12 @@ To install the configuration files, simply run `setup.sh`.  This does the follow
 
 ## Other config notes
 
+Stop MacOS prompting for private key decryption password when signing commits:
+
+```shell
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+
 I don't manage my SSH config here, but here's a reminder of the config to ensure keys get auto-forwarded to Codespaces:
 
 ```text
