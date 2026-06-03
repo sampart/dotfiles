@@ -170,3 +170,9 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # Fix Rails difftool usage
 THOR_MERGE=bcomp
+
+# Ensure local bin is in path (needed for Claude)
+export PATH="$HOME/.local/bin:$PATH"
+
+# Add key to agent so commits can be signed without asking for password every time
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
