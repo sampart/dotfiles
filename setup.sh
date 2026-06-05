@@ -80,8 +80,11 @@ do
   printf "symlinked $source to $dest\n"
 done
 
-echo "Changing default shell (you may be prompted for password)..."
+if [ "$(basename "$SHELL")" != "zsh" ]; then
+  echo "Changing default shell (you may be prompted for password)..."
 
-sudo chsh -s "$(which zsh)" "$(whoami)"
-echo "If the default shell changed, you may need to log out and in again for this to take effect."
+  sudo chsh -s "$(which zsh)" "$(whoami)"
+  echo "If the default shell changed, you may need to log out and in again for this to take effect."
+fi
+
 ./zsh-setup.sh
