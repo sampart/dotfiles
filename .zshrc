@@ -166,7 +166,7 @@ function task() {
 }
 
 # And a function to delete the worktree when the task is done.
-function stop-task() {
+function task-complete() {
   # If a task name is passed, delete that worktree. Otherwise, delete the current one.
   if [ -n "$1" ]; then    
     repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
