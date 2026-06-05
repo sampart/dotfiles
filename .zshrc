@@ -153,6 +153,35 @@ if [[ "$CODESPACES" = "true" ]]; then
   fi
 fi
 
+# Creates a new git worktree for the current project,
+# with the name of the task suffixed to the repo name.
+#
+# Bases the worktree off main.
+#
+# This needs to be a function so that `cd` works for the caller.
+function task() {
+  repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
+  git worktree add "../${repo_name}-$1" main
+  cd "../${repo_name}-$1"
+}
+
+# And a function to delete the worktree when the task is done.
+function stop-task() {
+  # If a task name is passed, delete that worktree. Otherwise, delete the current one.
+  if [ -n "$1" ]; then    
+    repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
+    git worktree remove "../${repo_name}-$1"
+  else
+    git worktree remove "$(pwd)"
+  fi
+  exit # close the tab
+}
+
+# And finally a list command
+function tasks() {
+  git worktree list
+}
+
 # If rbenv is installed, ensure that it's in the path and initialised
 if [ -x "$(command -v rbenv)" ]; then
   echo $PATH | grep rbenv >/dev/null || export PATH="$HOME/.rbenv/bin:$PATH"
