@@ -161,8 +161,10 @@ fi
 # This needs to be a function so that `cd` works for the caller.
 function task() {
   repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
-  git worktree add "../${repo_name}-$1" main
-  cd "../${repo_name}-$1"
+  worktree_path="../${repo_name}-$1"
+  git worktree add "${worktree_path}" main
+  cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
+  cd "${worktree_path}"
 }
 
 # And a function to delete the worktree when the task is done.
