@@ -165,6 +165,7 @@ function task() {
   git worktree add "${worktree_path}" main
   cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
   cd "${worktree_path}"
+  yarn install
 }
 
 # And a function to delete the worktree when the task is done.
@@ -175,8 +176,8 @@ function task-complete() {
     git worktree remove "../${repo_name}-$1"
   else
     git worktree remove "$(pwd)"
+    exit # close the tab
   fi
-  exit # close the tab
 }
 
 # And finally a list command
