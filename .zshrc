@@ -165,6 +165,7 @@ function task() {
   git worktree add "${worktree_path}" main
   cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
   cd "${worktree_path}"
+  git ch -b "$1"
   yarn install
 }
 
