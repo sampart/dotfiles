@@ -175,6 +175,8 @@ function task-complete() {
   if [ -n "$1" ]; then    
     repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
     git worktree remove "../${repo_name}-$1"
+    git ch "$1"
+    prm -r main
   else
     git worktree remove "$(pwd)"
     exit # close the tab
