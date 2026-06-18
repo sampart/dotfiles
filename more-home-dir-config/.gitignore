@@ -4,3 +4,5 @@ venv
 
 # VSCode
 __debug_bin
+
+**/.claude/settings.local.json
