@@ -162,7 +162,7 @@ fi
 function task() {
   repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
   worktree_path="../${repo_name}-$1"
-  git worktree add "${worktree_path}" main
+  git worktree add "${worktree_path}" main || return 1
   cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
   cd "${worktree_path}"
   git ch -b "$1"
