@@ -166,8 +166,11 @@ function task() {
   cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
   [ -f .env.development.local ] && cp .env.development.local "${worktree_path}/.env.development.local"
   [ -d storage ] && cp -r storage "${worktree_path}/"
+  has_yarn=$(find "." -maxdepth 1 -name 'yarn.lock' | wc -l)
   cd "${worktree_path}"
-  yarn install
+  if [ $has_yarn -gt 0 ]; then
+    yarn install
+  fi
 }
 
 # And a function to delete the worktree when the task is done.
