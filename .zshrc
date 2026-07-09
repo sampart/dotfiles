@@ -178,9 +178,7 @@ function task-complete() {
   # If a task name is passed, delete that worktree. Otherwise, delete the current one.
   if [ -n "$1" ]; then    
     repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
-    git worktree remove "../${repo_name}-$1"
-    git ch "$1"
-    prm -r main
+    git worktree remove "../${repo_name}-$1" && git checkout "$1" && prm -r main
   else
     git worktree remove "$(pwd)"
     exit # close the tab
