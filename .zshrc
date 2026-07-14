@@ -156,13 +156,19 @@ fi
 # Creates a new git worktree for the current project,
 # with the name of the task suffixed to the repo name.
 #
-# Bases the worktree off main.
+# Bases the worktree off main or the provided branch.
 #
 # This needs to be a function so that `cd` works for the caller.
 function task() {
   repo_name=$(basename -s .git "$(git config --get remote.origin.url)")
   worktree_path="../${repo_name}-$1"
-  git worktree add -b "$1" "${worktree_path}" main || return 1
+  target_branch="$2"
+  if [ -z "$target_branch" ]
+  then
+      target_branch="main";
+  fi
+
+  git worktree add -b "$1" "${worktree_path}" "$target_branch" || return 1
   cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
   [ -f .env.development.local ] && cp .env.development.local "${worktree_path}/.env.development.local"
   [ -d storage ] && cp -r storage "${worktree_path}/"
