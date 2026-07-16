@@ -179,6 +179,17 @@ function task() {
   fi
 }
 
+# If a PR has been merged from the task branch, and you want to now "reset"
+# the task branch to the latest main, you can use this function.
+function task-rebase() {
+  branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"; # detached HEAD
+  branch_name=${branch_name##refs/heads/};
+
+  git checkout -b "rebase-tmp-$branch_name" main || return 1
+  git branch -D "$branch_name" || return 1
+  git branch -m "$branch_name" || return 1
+}
+
 # And a function to delete the worktree when the task is done.
 function task-complete() {
   # If a task name is passed, delete that worktree. Otherwise, delete the current one.
