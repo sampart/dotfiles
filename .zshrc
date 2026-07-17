@@ -181,7 +181,7 @@ function task() {
 
 # If a PR has been merged from the task branch, and you want to now "reset"
 # the task branch to the latest main, you can use this function.
-function task-rebase() {
+function task-prm() {
   branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"; # detached HEAD
   branch_name=${branch_name##refs/heads/};
 
