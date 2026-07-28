@@ -61,3 +61,5 @@
 	sort = version:refname
 [difftool "bc"]
 	trustExitCode = true
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
