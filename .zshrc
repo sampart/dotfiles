@@ -182,6 +182,14 @@ function task() {
 # If a PR has been merged from the task branch, and you want to now "reset"
 # the task branch to the latest main, you can use this function.
 function task-prm() {
+  # first check that main has been updated
+  git fetch
+  main_diff=$(git diff main..origin/main 2>/dev/null)
+  if [ -n "$main_diff" ]; then
+    echo "main is not up to date with origin/main. Run git pull in the main worktree first."
+    return 1
+  fi
+
   branch_name="$(git symbolic-ref HEAD 2>/dev/null)" || branch_name="(unnamed branch)"; # detached HEAD
   branch_name=${branch_name##refs/heads/};
 
