@@ -173,10 +173,12 @@ function task() {
   [ -f .env.development.local ] && cp .env.development.local "${worktree_path}/.env.development.local"
   [ -d storage ] && cp -r storage "${worktree_path}/"
   has_yarn=$(find "." -maxdepth 1 -name 'yarn.lock' | wc -l)
+
   cd "${worktree_path}"
   if [ $has_yarn -gt 0 ]; then
     yarn install
   fi
+  [ -f bin/rails ] && bin/rails -T tailwindcss:build | wc -l | grep -qv 0 && bin/rails tailwindcss:build
 }
 
 # If a PR has been merged from the task branch, and you want to now "reset"
