@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Run Claude in a devcontainer
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . claude
