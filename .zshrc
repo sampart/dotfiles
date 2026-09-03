@@ -169,7 +169,7 @@ function task() {
   fi
 
   git worktree add -b "$1" "${worktree_path}" "$target_branch" || return 1
-  cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
+  [ -f .claude/settings.local.json ] && cp .claude/settings.local.json "${worktree_path}/.claude/settings.local.json"
   [ -f .env.development.local ] && cp .env.development.local "${worktree_path}/.env.development.local"
   [ -d storage ] && cp -r storage "${worktree_path}/"
   [ -d coverage ] && cp -r coverage "${worktree_path}/"
