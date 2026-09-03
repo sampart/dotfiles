@@ -245,3 +245,4 @@ ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 # Avoid needing laptop admin credentials for apps by installing in ~/Applications
 # This setting only affects apps installed via `brew bundle`, I think.
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
