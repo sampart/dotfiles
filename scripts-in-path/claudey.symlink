@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# If the "copy" arg is provided, copy from dev container, otherwise run Claude
+if [ "$1" = "copy" ]; then
+  # default to 1000 for the directory suffix, or use $2 if provided
+  suffix=${2:-1000}
+  devcontainer exec --workspace-folder . cat /tmp/claude-"$suffix"/response.md | pbcopy
+  exit 0
+fi
+
 # Run Claude in a devcontainer
 devcontainer up --workspace-folder .
 devcontainer exec --workspace-folder . claude
