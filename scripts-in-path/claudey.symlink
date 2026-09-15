@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # If the "copy" arg is provided, copy from dev container, otherwise run Claude
-if [ "$1" = "copy" ]; then
+# If the arg is "copy", append "pbcopy"; for "cat", just output to stdout
+if [ "$1" = "copy" ] || [ "$1" = "cat" ]; then
   # default to 1000 for the directory suffix, or use $2 if provided
   suffix=${2:-1000}
-  devcontainer exec --workspace-folder . cat /tmp/claude-"$suffix"/response.md | pbcopy
+  if [ "$1" = "copy" ]; then
+    devcontainer exec --workspace-folder . cat /tmp/claude-"$suffix"/response.md | pbcopy
+  else
+    devcontainer exec --workspace-folder . cat /tmp/claude-"$suffix"/response.md
+  fi
   exit 0
 fi
 
