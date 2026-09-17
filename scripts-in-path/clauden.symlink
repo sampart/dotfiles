@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Run Claude with nono (https://nono.sh)
+nono run --profile claude-local --allow-cwd -- claude
