@@ -1,4 +1,38 @@
 #!/bin/bash
 
 # Run Claude with nono (https://nono.sh)
-nono run --profile claude-local --allow-cwd -- claude
+
+# ---------------------------------------------------------------------------
+# Determine additional allowed directories when using git worktrees
+# ---------------------------------------------------------------------------
+
+# Determine extra --allow paths nono needs when $PWD is a linked git worktree
+# (its .git is a *file* pointing at the real .git dir inside the main repo).
+resolve_abs() {
+  # $1 is always a directory here (git only ever prints dirs for these two flags)
+  if [[ $1 = /* ]]; then
+    printf '%s\n' "$1"
+  else
+    (cd "$1" && pwd)
+  fi
+}
+
+nono_extra_allow=()
+
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  git_dir=$(resolve_abs "$(git rev-parse --git-dir)")
+  common_dir=$(resolve_abs "$(git rev-parse --git-common-dir)")
+
+  # In the main worktree these are the same path. In a linked worktree
+  # (`git worktree add`), --git-dir is the per-worktree .git/worktrees/<id>
+  # dir but --git-common-dir points at the main repo's real .git, whose
+  # parent is the main repo's root.
+  if [[ "$git_dir" != "$common_dir" ]]; then
+    main_repo_root=$(dirname "$common_dir")
+    nono_extra_allow+=(--allow "$main_repo_root")
+  fi
+fi
+
+# ---------------------------------------------------------------------------
+
+nono run --profile claude-local --allow-cwd "${nono_extra_allow[@]}" -- claude
