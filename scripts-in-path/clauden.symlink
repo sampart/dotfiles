@@ -35,4 +35,4 @@ fi
 
 # ---------------------------------------------------------------------------
 
-nono run --profile claude-local --allow-cwd "${nono_extra_allow[@]}" -- claude
+nono run --profile claude-local --allow-gpu --allow-cwd "${nono_extra_allow[@]}" -- claude "$@"
