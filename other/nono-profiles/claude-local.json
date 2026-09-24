@@ -1,0 +1,114 @@
+{
+  "extends": [
+    "claude"
+  ],
+  "meta": {
+    "name": "claude-local",
+    "version": "",
+    "description": "Local additions on top of the claude pack profile: rbenv/Ruby toolchain, the dotfiles gitconfig_os include, a writable BUNDLE_USER_HOME (avoids bundler falling back to a temp home dir since $HOME itself isn't writable), read-write access to the Claude Code install dir so `claude update` can write new versions, and a bypass_protection carve-out for the 'Chrome for Testing' crash-report dir Selenium's browser writes to regardless of --user-data-dir (this is the isolated test browser Selenium downloads, not the user's real Chrome profile, which stays covered by deny_browser_data_macos). Also allows Chrome for Testing to register its crashpad/rendezvous Mach services and lets chromedriver signal/inspect the Chrome processes it spawns, so headless Selenium system specs can start. The Chrome browser process additionally opens the IOPMrootDomain power-management user client at startup and issues app-sandbox read extensions over its own bundle for its child processes; both are granted below, scoped to the Selenium browser cache. Non-Chrome additions: the claude-carbon data dir its statusline scripts read, /usr/libexec for path_helper, and read-only gh/pry config files.",
+    "author": null
+  },
+  "security": {
+    "signal_mode": "allow_same_sandbox",
+    "process_info_mode": "allow_same_sandbox",
+    "ipc_mode": null,
+    "capability_elevation": null,
+    "approval_backends": {},
+    "approval_defaults": null,
+    "wsl2_proxy_policy": null
+  },
+  "groups": {
+    "include": [],
+    "exclude": []
+  },
+  "commands": {
+    "allow": [],
+    "deny": []
+  },
+  "filesystem": {
+    "allow": [
+      "$HOME/.rbenv",
+      "$HOME/.local/share/claude",
+      "$HOME/Library/Application Support/Google/Chrome for Testing"
+    ],
+    "read": [
+      "/Users/sam/code/claude-carbon/scripts",
+      "/Users/sam/code/claude-carbon/data",
+      "/usr/libexec"
+    ],
+    "write": [],
+    "allow_file": [
+      "$HOME/.gitignore",
+      "$HOME/.yarnrc",
+      "$HOME/.local/bin/claude"
+    ],
+    "read_file": [
+      "$HOME/.gitconfig_os",
+      "$HOME/.config/gh/config.yml",
+      "$HOME/.pryrc"
+    ],
+    "write_file": [],
+    "unix_socket": [],
+    "unix_socket_bind": [],
+    "unix_socket_dir": [],
+    "unix_socket_dir_bind": [],
+    "unix_socket_subtree": [],
+    "unix_socket_subtree_bind": [],
+    "deny": [],
+    "bypass_protection": [
+      "$HOME/Library/Application Support/Google/Chrome for Testing"
+    ],
+    "suppress_save_prompt": []
+  },
+  "network": {
+    "block": false,
+    "allow_http2": false,
+    "allow_domain": [],
+    "deny_domain": [],
+    "open_port": [],
+    "open_port_range": [],
+    "listen_port": [],
+    "listen_port_range": [],
+    "connect_port": [],
+    "no_proxy": [],
+    "custom_credentials": {},
+    "tls_intercept": null,
+    "upstream_proxy": null,
+    "upstream_bypass": []
+  },
+  "diagnostics": {
+    "suppress_system_services": []
+  },
+  "linux": {
+    "af_unix_mediation": null,
+    "sandbox_policy": null
+  },
+  "env_credentials": {},
+  "credential_capture": {},
+  "credential_providers": {},
+  "credential_routes": [],
+  "workdir": {
+    "access": "none"
+  },
+  "environment": {
+    "set_vars": {
+      "BUNDLE_USER_HOME": "$HOME/.cache/bundle"
+    }
+  },
+  "hooks": {},
+  "session_hooks": {},
+  "rollback": {
+    "exclude_patterns": [],
+    "exclude_globs": []
+  },
+  "interactive": false,
+  "skipdirs": [],
+  "packs": [],
+  "command_args": [],
+  "unsafe_macos_seatbelt_rules": [
+    "(allow mach-register (global-name-prefix \"org.chromium.crashpad.\"))",
+    "(allow mach-register (global-name-prefix \"com.google.chrome.for.testing.\"))",
+    "(allow iokit-open-user-client (iokit-user-client-class \"RootDomainUserClient\"))",
+    "(allow file-issue-extension (require-all (extension-class \"com.apple.app-sandbox.read\") (subpath \"/Users/sam/.cache/selenium\")))"
+  ]
+}
