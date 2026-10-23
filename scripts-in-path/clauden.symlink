@@ -34,5 +34,18 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 fi
 
 # ---------------------------------------------------------------------------
+# Allow Now Foster's `local_path` (a bit hacky, but it's the main use case)
+# ---------------------------------------------------------------------------
+
+now_foster_yml='projects/now_foster/project.local.yml'
+if [[ -f "$now_foster_yml" ]]; then
+  # First uncommented `local_path:` value, minus any trailing comment and quotes
+  local_path=$(sed -nE 's/^[[:space:]]*local_path:[[:space:]]*([^#]*[^#[:space:]]).*/\1/p' "$now_foster_yml" \
+    | head -n 1 | tr -d "\"'")
+  local_path="${local_path/#\~/$HOME}"
+  [[ -n "$local_path" ]] && nono_extra_allow+=(--allow "$local_path")
+fi
+
+# ---------------------------------------------------------------------------
 
 nono run --profile claude-local --allow-cwd "${nono_extra_allow[@]}" -- claude "$@"
