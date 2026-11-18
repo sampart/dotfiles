@@ -1,11 +1,9 @@
 {
-  "extends": [
-    "claude"
-  ],
+  "extends": [ "nolabs-ai/claude" ],
   "meta": {
     "name": "claude-local",
     "version": "",
-    "description": "Local additions on top of the claude pack profile: rbenv/Ruby toolchain, the dotfiles gitconfig_os include, a writable BUNDLE_USER_HOME (avoids bundler falling back to a temp home dir since $HOME itself isn't writable), read-write access to the Claude Code install dir so `claude update` can write new versions, and a bypass_protection carve-out for the 'Chrome for Testing' crash-report dir Selenium's browser writes to regardless of --user-data-dir (this is the isolated test browser Selenium downloads, not the user's real Chrome profile, which stays covered by deny_browser_data_macos). Also allows Chrome for Testing to register its crashpad/rendezvous Mach services and lets chromedriver signal/inspect the Chrome processes it spawns, so headless Selenium system specs can start. The Chrome browser process additionally opens the IOPMrootDomain power-management user client at startup and issues app-sandbox read extensions over its own bundle for its child processes; both are granted below, scoped to the Selenium browser cache. Non-Chrome additions: the claude-carbon data dir its statusline scripts read, /usr/libexec for path_helper, and read-only gh/pry config files.",
+    "description": "+++Local additions on top of the claude pack profile: rbenv/Ruby toolchain, the dotfiles gitconfig_os include, a writable BUNDLE_USER_HOME (avoids bundler falling back to a temp home dir since $HOME itself isn't writable), read-write access to the Claude Code install dir so `claude update` can write new versions, and a bypass_protection carve-out for the 'Chrome for Testing' crash-report dir Selenium's browser writes to regardless of --user-data-dir (this is the isolated test browser Selenium downloads, not the user's real Chrome profile, which stays covered by deny_browser_data_macos). Also allows Chrome for Testing to register its crashpad/rendezvous Mach services and lets chromedriver signal/inspect the Chrome processes it spawns, so headless Selenium system specs can start. The Chrome browser process additionally opens the IOPMrootDomain power-management user client at startup and issues app-sandbox read extensions over its own bundle for its child processes; both are granted below, scoped to the Selenium browser cache. Non-Chrome additions: the claude-carbon data dir its statusline scripts read, /usr/libexec for path_helper, and read-only gh/pry config files.",
     "author": null
   },
   "security": {
@@ -17,36 +15,18 @@
     "approval_defaults": null,
     "wsl2_proxy_policy": null
   },
-  "groups": {
-    "include": [],
-    "exclude": []
-  },
-  "commands": {
-    "allow": [],
-    "deny": []
-  },
+  "groups": { "include": [], "exclude": [] },
+  "commands": { "allow": [], "deny": [] },
   "filesystem": {
     "allow": [
       "$HOME/.rbenv",
       "$HOME/.local/share/claude",
       "$HOME/Library/Application Support/Google/Chrome for Testing"
     ],
-    "read": [
-      "/Users/sam/code/claude-carbon/scripts",
-      "/Users/sam/code/claude-carbon/data",
-      "/usr/libexec"
-    ],
+    "read": [ "/Users/sam/code/claude-carbon/scripts", "/Users/sam/code/claude-carbon/data", "/usr/libexec" ],
     "write": [],
-    "allow_file": [
-      "$HOME/.gitignore",
-      "$HOME/.yarnrc",
-      "$HOME/.local/bin/claude"
-    ],
-    "read_file": [
-      "$HOME/.gitconfig_os",
-      "$HOME/.config/gh/config.yml",
-      "$HOME/.pryrc"
-    ],
+    "allow_file": [ "$HOME/.gitignore", "$HOME/.yarnrc", "$HOME/.local/bin/claude" ],
+    "read_file": [ "$HOME/.gitconfig_os", "$HOME/.config/gh/config.yml", "$HOME/.pryrc" ],
     "write_file": [],
     "unix_socket": [],
     "unix_socket_bind": [],
@@ -55,9 +35,7 @@
     "unix_socket_subtree": [],
     "unix_socket_subtree_bind": [],
     "deny": [],
-    "bypass_protection": [
-      "$HOME/Library/Application Support/Google/Chrome for Testing"
-    ],
+    "bypass_protection": [ "$HOME/Library/Application Support/Google/Chrome for Testing" ],
     "suppress_save_prompt": []
   },
   "network": {
@@ -76,32 +54,19 @@
     "upstream_proxy": null,
     "upstream_bypass": []
   },
-  "diagnostics": {
-    "suppress_system_services": []
-  },
-  "linux": {
-    "af_unix_mediation": null,
-    "sandbox_policy": null
-  },
+  "diagnostics": { "suppress_system_services": [] },
+  "linux": { "af_unix_mediation": null, "sandbox_policy": null },
   "env_credentials": {},
   "credential_capture": {},
   "credential_providers": {},
   "credential_routes": [],
-  "workdir": {
-    "access": "none"
-  },
+  "workdir": { "access": "none" },
   "environment": {
-    "set_vars": {
-      "BUNDLE_USER_HOME": "$HOME/.cache/bundle"
-    }
+    "set_vars": { "BUNDLE_USER_HOME": "$HOME/.cache/bundle" }
   },
   "hooks": {},
   "session_hooks": {},
-  "rollback": {
-    "exclude_patterns": [],
-    "exclude_globs": []
-  },
-  "interactive": false,
+  "rollback": { "exclude_patterns": [], "exclude_globs": [] },
   "skipdirs": [],
   "packs": [],
   "command_args": [],
